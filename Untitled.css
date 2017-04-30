@@ -1,3 +1,6 @@
+body {
+  background-color: #980049; }
+
 .winery {
   height: 600px;
   background-image: url("winery.jpg");
@@ -20,7 +23,7 @@
   background-position: top right;
   min-height: 500px; }
 
-.card-block {
+.card {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
