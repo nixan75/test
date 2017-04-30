@@ -6,6 +6,7 @@
   background-size: cover; }
 
 .cosmopolitan {
+  margin-top: 60px;
   height: 600px;
   background-image: url("cosmopolitan.jpg");
   background-repeat: no-repeat;
