@@ -20,6 +20,13 @@
   background-position: top right;
   min-height: 500px; }
 
+.card-block {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(152, 0, 73, 0.5);
+  color: #ffffff; }
+
 /*!
 * Bootstrap 4.0.0-alpha.6 (https://getbootstrap.com)
 * Copyright 2011-2017 The Bootstrap Authors
