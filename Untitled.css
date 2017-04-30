@@ -13,6 +13,13 @@
   background-position: center center;
   background-size: cover; }
 
+.history {
+  background-image: url("history.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top right;
+  min-height: 500px; }
+
 /*!
 * Bootstrap 4.0.0-alpha.6 (https://getbootstrap.com)
 * Copyright 2011-2017 The Bootstrap Authors
