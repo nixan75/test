@@ -1,3 +1,8 @@
+body
+{
+    background-color: #980049;
+}
+
 .winery
 {
     height: 600px;
@@ -26,7 +31,7 @@
     min-height: 500px;
 }
 
-.card-block
+.card
 {
   position: relative;
   top: 50%;
@@ -34,6 +39,7 @@
   background-color: rgba(152, 0, 73, 0.5);
   color: #ffffff;
 }
+
 // Variables
 //
 
