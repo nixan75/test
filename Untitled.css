@@ -1,6 +1,13 @@
 .winery {
   height: 600px;
-  background-image: url("img/winery.jpg");
+  background-image: url("winery.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; }
+
+.cosmopolitan {
+  height: 600px;
+  background-image: url("cosmopolitan.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover; }
