@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Donatella Gaetani Hair Styling Zurich">
+    <meta name="author" content="AETERNA 24">
+    <title>Hairstyling di Donatella Gaetani</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat+Alternates:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#E2C17D',
+                        silk: '#F0EDE9',
+                        mocha: '#A47864',
+                        ink: '#1C1C1C',
+                        // Colori AETERNA 24
+                        'aeterna-space': '#0B0C10',
+                        'aeterna-cyan': '#45F3FF',
+                        'aeterna-rose': '#FF2A7A',
+                        'aeterna-silver': '#C5C6C7'
+                    },
+                    fontFamily: {
+                        sans: ['"Montserrat Alternates"', 'sans-serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .reveal {
+                @apply opacity-0 translate-y-8 transition-all duration-[800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)];
+            }
+            .reveal.active {
+                @apply opacity-100 translate-y-0;
+            }
+        }
+
+        .floating-decor-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; overflow: hidden; }
+        .floating-img { position: absolute; opacity: 0.5; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); filter: grayscale(20%); animation: floatAnimation 8s ease-in-out infinite alternate; }
+        .dark .floating-img { opacity: 0.2; }
+        
+        .img-pos-1 { top: 5%; left: -5%; width: 350px; transform: rotate(-10deg); }
+        .img-pos-2 { top: 45%; right: -8%; width: 400px; transform: rotate(5deg); animation-delay: 2s; }
+        .img-pos-3 { bottom: -5%; left: 15%; width: 300px; transform: rotate(8deg); animation-delay: 4s; }
+        
+        @keyframes floatAnimation {
+            0% { transform: translateY(0px) rotate(var(--rotation, 0deg)); }
+            100% { transform: translateY(-20px) rotate(var(--rotation, 0deg)); }
+        }
+
+        @media (max-width: 768px) {
+            .floating-img { opacity: 0.15; }
+            .img-pos-1 { width: 200px; left: -20%; }
+            .img-pos-2 { width: 250px; right: -20%; top: 30%; }
+            .img-pos-3 { width: 180px; bottom: 0%; }
+        }
+        .fslightbox-container { font-family: 'Montserrat Alternates', sans-serif !important; }
+    </style>
+</head>
+<body class="bg-silk text-ink dark:bg-ink dark:text-silk transition-colors duration-300 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="bg-silk dark:bg-ink sticky top-0 z-50 py-4 transition-colors duration-300 shadow-sm dark:shadow-gold/10">
+        <div class="container mx-auto px-4 flex flex-wrap items-center justify-between">
+            
+            <a href="#" class="block w-full lg:w-auto text-center lg:text-left">
+                <img src="assets/img/DG_logo_white-border.webp" alt="Hair Styling Donatella Gaetani logo" 
+                     class="h-[150px] mx-auto lg:mx-0 object-contain dark:drop-shadow-[0_0_10px_rgba(226,193,125,0.3)]">
+            </a>
+            
+            <button id="mobile-menu-btn" class="lg:hidden text-ink dark:text-gold focus:outline-none p-2 ml-auto">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <div id="nav-menu" class="hidden w-full lg:flex lg:w-auto lg:items-center mt-4 lg:mt-0">
+                <ul class="flex flex-col lg:flex-row lg:space-x-8 text-center lg:text-left items-center">
+                    <li><a href="#" data-i18n="nav_home" class="block py-2 text-gold font-bold uppercase tracking-wider text-sm">Home</a></li>
+                    <li><a href="#oasi-di-relax" data-i18n="nav_relax" class="block py-2 hover:text-gold dark:hover:text-gold uppercase tracking-wider text-sm transition-colors">Oasi di Relax</a></li>
+                    <li><a href="#servizi" data-i18n="nav_services" class="block py-2 hover:text-gold dark:hover:text-gold uppercase tracking-wider text-sm transition-colors">Servizi</a></li>
+                    <li><a href="#staff" data-i18n="nav_staff" class="block py-2 hover:text-gold dark:hover:text-gold uppercase tracking-wider text-sm transition-colors">Staff</a></li>
+                    <li><a href="#contatti" data-i18n="nav_contact" class="block py-2 hover:text-gold dark:hover:text-gold uppercase tracking-wider text-sm transition-colors">Contatti</a></li>
+                    
+                    <!-- Language Switcher Dinamico -->
+                    <li class="py-2 cursor-pointer group" onclick="toggleLanguage()">
+                        <div class="flex items-center justify-center space-x-2">
+                            <img id="lang-btn-img" src="assets/img/icon_it.png" alt="Switch language" class="w-6 h-6 object-cover rounded-full group-hover:scale-110 transition-transform">
+                            <span id="lang-btn-text" class="group-hover:text-gold uppercase tracking-wider text-sm font-semibold transition-colors">ITALIANO</span>
+                        </div>
+                    </li>
+                    
+                    <!-- Dark Mode Switch -->
+                    <li class="py-2">
+                        <button id="theme-toggle" class="p-2 rounded-full bg-ink/10 dark:bg-silk/10 hover:bg-gold/20 dark:hover:bg-gold/20 transition-colors">
+                            <i class="fas fa-moon text-ink dark:hidden"></i>
+                            <i class="fas fa-sun text-gold hidden dark:block"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 lg:py-24">
+        <div class="absolute top-0 left-0 w-full lg:w-7/12 h-full bg-gradient-to-r from-white/60 to-transparent dark:from-ink/80 dark:to-transparent z-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <p data-i18n="hero_subtitle" class="text-sm font-bold uppercase tracking-widest text-ink/70 dark:text-silk/70 mb-4"></p>
+                    <h1 class="reveal font-serif text-5xl md:text-6xl font-bold text-mocha mb-6">Hair Styling DG</h1>
+                    <p data-i18n="hero_desc1" class="reveal delay-100 text-lg md:text-xl text-ink/80 dark:text-silk/80 mb-6 leading-relaxed"></p>
+                    <p data-i18n="hero_desc2" class="reveal delay-200 text-lg md:text-xl text-ink/80 dark:text-silk/80 mb-8 leading-relaxed"></p>
+                    <a href="https://hairstyling-donatella-gaetani.hairlist.ch/meinWunschtermin" target="_blank" rel="noopener" 
+                       data-i18n="btn_book"
+                       class="reveal delay-300 inline-block bg-ink text-gold dark:bg-gold dark:text-ink border border-ink dark:border-gold hover:bg-gold hover:text-ink dark:hover:bg-transparent dark:hover:text-gold px-8 py-3 uppercase tracking-wider font-bold transition-all duration-300">
+                    </a>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <div class="bg-gold p-4 lg:p-6 shadow-xl dark:shadow-gold/10">
+                        <img src="assets/img/hero-section-img.webp" alt="Donatella ed il suo team" class="w-full h-auto object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oasi di Relax (4 Foto Asimmetriche) -->
+    <section id="oasi-di-relax" class="py-16 lg:py-24 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <!-- Sinistra: Griglia 4 Foto -->
+                <div class="lg:col-span-7">
+                    <div class="grid grid-cols-2 gap-4 md:gap-6 items-start">
+                        <div class="space-y-4 md:space-y-6 lg:mt-12">
+                            <a data-fslightbox="oasi-gallery" href="assets/img/interno_negozio_01.jpg" class="group block relative overflow-hidden shadow-md hover:shadow-gold/30 transition-shadow">
+                                <img src="assets/img/interno_negozio_01.webp" alt="Dettaglio salone" class="w-full aspect-square object-cover transform transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><span class="text-gold text-4xl font-light">+</span></div>
+                            </a>
+                            <a data-fslightbox="oasi-gallery" href="assets/img/interno_negozio_02.jpg" class="group block relative overflow-hidden shadow-md hover:shadow-gold/30 transition-shadow">
+                                <img src="assets/img/interno_negozio_02.webp" alt="Dettaglio salone" class="w-full aspect-[4/5] object-cover transform transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><span class="text-gold text-4xl font-light">+</span></div>
+                            </a>
+                        </div>
+                        <div class="space-y-4 md:space-y-6">
+                            <a data-fslightbox="oasi-gallery" href="assets/img/interno_negozio_03.jpg" class="group block relative overflow-hidden shadow-md hover:shadow-gold/30 transition-shadow">
+                                <img src="assets/img/interno_negozio_03.webp" alt="Dettaglio salone" class="w-full aspect-[4/5] object-cover transform transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><span class="text-gold text-4xl font-light">+</span></div>
+                            </a>
+                            <a data-fslightbox="oasi-gallery" href="assets/img/interno_negozio_04.jpg" class="group block relative overflow-hidden shadow-md hover:shadow-gold/30 transition-shadow">
+                                <img src="assets/img/interno_negozio_04.webp" alt="Dettaglio salone" class="w-full aspect-square object-cover transform transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><span class="text-gold text-4xl font-light">+</span></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Destra: Testo -->
+                <div class="lg:col-span-5">
+                    <h1 data-i18n="relax_title" class="reveal font-serif text-5xl md:text-6xl font-bold text-mocha mb-6"></h1>
+                    <p data-i18n="relax_subtitle" class="reveal delay-100 text-xl text-ink/80 dark:text-silk/80 mb-8 leading-relaxed font-semibold"></p>
+                    <p data-i18n="relax_desc1" class="reveal delay-200 text-lg leading-relaxed text-ink/80 dark:text-silk/80 mb-6"></p>
+                    <p data-i18n="relax_desc2" class="reveal delay-300 text-lg leading-relaxed text-ink/80 dark:text-silk/80"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servizi -->
+    <section id="servizi" class="relative py-24 min-h-[800px] overflow-hidden bg-silk/50 dark:bg-ink/90">
+        <div class="floating-decor-layer">
+            <img src="assets/img/servizi_01_bg.webp" class="floating-img img-pos-1" style="--rotation: -10deg;" alt="Decor 1" loading="lazy">
+            <img src="assets/img/servizi_02_bg.webp" class="floating-img img-pos-2" style="--rotation: 5deg;" alt="Decor 2" loading="lazy">
+            <img src="assets/img/servizi_03_bg.webp" class="floating-img img-pos-3" style="--rotation: 8deg;" alt="Decor 3" loading="lazy">
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex justify-center">
+                <div class="w-full lg:w-8/12">
+                    <div class="text-center mb-12">
+                        <h2 data-i18n="serv_subtitle" class="reveal text-sm uppercase tracking-[2px] text-gold font-bold mb-2"></h2>
+                        <h1 data-i18n="serv_title" class="reveal font-serif text-5xl md:text-6xl font-bold text-mocha mb-4"></h1>
+                        <p data-i18n="serv_desc" class="reveal text-lg text-ink/80 dark:text-silk/80"></p>
+                    </div>
+
+                    <!-- Service Cards -->
+                    <div class="space-y-6">
+                        <!-- Card 1 -->
+                        <div class="bg-white/90 dark:bg-ink/70 backdrop-blur-md p-8 border-l-4 border-transparent hover:border-gold shadow-lg hover:shadow-gold/20 transform transition-all duration-300 hover:-translate-y-1">
+                            <h2 data-i18n="serv_1_title" class="font-serif text-3xl font-bold text-mocha mb-3"></h2>
+                            <p data-i18n="serv_1_desc" class="text-ink/70 dark:text-silk/70 mb-4"></p>
+                            <button data-modal-target="BrazilCacauShein" data-i18n="serv_btn" class="text-gold font-bold uppercase text-sm hover:underline hover:text-ink dark:hover:text-silk transition-colors"></button>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="bg-white/90 dark:bg-ink/70 backdrop-blur-md p-8 border-l-4 border-transparent hover:border-gold shadow-lg hover:shadow-gold/20 transform transition-all duration-300 hover:-translate-y-1">
+                            <h2 data-i18n="serv_2_title" class="font-serif text-3xl font-bold text-mocha mb-3"></h2>
+                            <p data-i18n="serv_2_desc" class="text-ink/70 dark:text-silk/70 mb-4"></p>
+                            <button data-modal-target="Balayage" data-i18n="serv_btn" class="text-gold font-bold uppercase text-sm hover:underline hover:text-ink dark:hover:text-silk transition-colors"></button>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="bg-white/90 dark:bg-ink/70 backdrop-blur-md p-8 border-l-4 border-transparent hover:border-gold shadow-lg hover:shadow-gold/20 transform transition-all duration-300 hover:-translate-y-1">
+                            <h2 data-i18n="serv_3_title" class="font-serif text-3xl font-bold text-mocha mb-3"></h2>
+                            <p data-i18n="serv_3_desc" class="text-ink/70 dark:text-silk/70 mb-4"></p>
+                            <button data-modal-target="Babylights" data-i18n="serv_btn" class="text-gold font-bold uppercase text-sm hover:underline hover:text-ink dark:hover:text-silk transition-colors"></button>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="bg-white/90 dark:bg-ink/70 backdrop-blur-md p-8 border-l-4 border-transparent hover:border-gold shadow-lg hover:shadow-gold/20 transform transition-all duration-300 hover:-translate-y-1">
+                            <h2 data-i18n="serv_4_title" class="font-serif text-3xl font-bold text-mocha mb-3"></h2>
+                            <p data-i18n="serv_4_desc" class="text-ink/70 dark:text-silk/70 mb-4"></p>
+                            <button data-modal-target="Mèches" data-i18n="serv_btn" class="text-gold font-bold uppercase text-sm hover:underline hover:text-ink dark:hover:text-silk transition-colors"></button>
+                        </div>
+                        <!-- Card 5 -->
+                        <div class="bg-white/90 dark:bg-ink/70 backdrop-blur-md p-8 border-l-4 border-transparent hover:border-gold shadow-lg hover:shadow-gold/20 transform transition-all duration-300 hover:-translate-y-1">
+                            <h2 data-i18n="serv_5_title" class="font-serif text-3xl font-bold text-mocha mb-3"></h2>
+                            <p data-i18n="serv_5_desc" class="text-ink/70 dark:text-silk/70 mb-4"></p>
+                            <button data-modal-target="Colore" data-i18n="serv_btn" class="text-gold font-bold uppercase text-sm hover:underline hover:text-ink dark:hover:text-silk transition-colors"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Atelier Visivo -->
+    <section class="py-16 lg:py-24 bg-silk dark:bg-ink">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 data-i18n="atelier_title" class="reveal font-serif text-5xl md:text-6xl font-bold text-mocha"></h1>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Immagini Gallery -->
+                <a data-fslightbox="gallery" href="assets/img/atelier-visivo-01.jpg" class="group block relative overflow-hidden border border-gold/20">
+                    <img src="assets/img/atelier-visivo-01.webp" alt="Acconciatura" class="w-full h-[400px] object-cover object-top transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><span class="text-gold text-4xl font-light">+</span></div>
+                </a>
+                <a data-fslightbox="gallery" href="assets/img/atelier-visivo-02.jpg" class="group block relative overflow-hidden border border-gold/20">
+                    <img src="assets/img/atelier-visivo-02.webp" alt="Acconciatura" class="w-full h-[400px] object-cover object-top transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><span class="text-gold text-4xl font-light">+</span></div>
+                </a>
+                <a data-fslightbox="gallery" href="assets/img/atelier-visivo-03.jpg" class="group block relative overflow-hidden border border-gold/20">
+                    <img src="assets/img/atelier-visivo-03.webp" alt="Acconciatura" class="w-full h-[400px] object-cover object-top transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><span class="text-gold text-4xl font-light">+</span></div>
+                </a>
+                <a data-fslightbox="gallery" href="assets/img/atelier-visivo-04.jpg" class="group block relative overflow-hidden border border-gold/20">
+                    <img src="assets/img/atelier-visivo-04.webp" alt="Acconciatura" class="w-full h-[400px] object-cover object-top transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><span class="text-gold text-4xl font-light">+</span></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff -->
+    <section id="staff" class="py-16 lg:py-24 text-center md:text-left overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h1 data-i18n="staff_title" class="reveal font-serif text-5xl md:text-6xl font-bold text-mocha"></h1>
+            </div>
+
+            <!-- Donatella -->
+            <div class="grid grid-cols-1 md:grid-cols-12 items-center mb-24 gap-8">
+                <div class="md:col-span-8 xl:col-span-9 order-2 md:order-2 md:pl-12">
+                    <h1 class="reveal font-serif italic text-4xl text-mocha uppercase mb-2">Donatella</h1>
+                    <h2 data-i18n="staff_1_role" class="reveal font-serif text-2xl mb-6 text-mocha"></h2>
+                    <p data-i18n="staff_1_desc1" class="text-lg mb-4 text-ink/80 dark:text-silk/80"></p>
+                    <p data-i18n="staff_1_desc2" class="text-lg mb-4 text-ink/80 dark:text-silk/80"></p>
+                    <p data-i18n="staff_1_desc3" class="text-lg text-ink/80 dark:text-silk/80"></p>
+                </div>
+                <div class="md:col-span-4 xl:col-span-3 order-1 md:order-1">
+                    <img src="assets/img/donatella.webp" alt="Donatella Gaetani" class="w-full h-auto object-cover shadow-xl dark:shadow-gold/10" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Ana -->
+            <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-8">
+                <div class="md:col-span-8 xl:col-span-9 md:pr-12">
+                    <h1 class="reveal font-serif italic text-4xl text-mocha uppercase mb-2">Ana</h1>
+                    <h2 data-i18n="staff_2_role" class="reveal font-serif text-2xl mb-6 text-mocha"></h2>
+                    <p data-i18n="staff_2_desc1" class="text-lg mb-4 text-ink/80 dark:text-silk/80"></p>
+                    <p data-i18n="staff_2_desc2" class="text-lg mb-4 text-ink/80 dark:text-silk/80"></p>
+                    <p data-i18n="staff_2_desc3" class="text-lg text-ink/80 dark:text-silk/80"></p>
+                </div>
+                <div class="md:col-span-4 xl:col-span-3">
+                    <img src="assets/img/ana.webp" alt="Ana" class="w-full h-auto object-cover shadow-xl dark:shadow-gold/10" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contatti Footer -->
+    <footer id="contatti" class="bg-ink text-silk py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <a href="#" class="font-serif text-3xl font-bold uppercase tracking-widest text-mocha block mb-4">Hair Styling DG</a>
+                    <p data-i18n="footer_subtitle" class="text-silk/80 mb-6 italic"></p>
+                    <div class="mb-6 space-y-2">
+                        <a href="tel:+41432430715" class="block hover:text-gold transition-colors">+41 43 243 07 15</a>
+                        <a href="mailto:donagaetani@icloud.com" class="block hover:text-gold transition-colors">donagaetani@icloud.com</a>
+                    </div>
+                    <a href="https://www.instagram.com/hairstylingdonatella_gaetani" target="_blank" class="inline-block text-silk hover:text-gold transition-colors">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+                    </a>
+                </div>
+                <div>
+                    <h2 data-i18n="footer_hours_title" class="font-bold text-lg uppercase text-mocha mb-6 tracking-widest"></h2>
+                    <ul class="space-y-3 text-silk/80">
+                        <li data-i18n="footer_hours_1"></li>
+                        <li data-i18n="footer_hours_2"></li>
+                        <li data-i18n="footer_hours_3"></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 data-i18n="footer_location_title" class="font-bold text-lg uppercase text-mocha mb-6 tracking-widest"></h2>
+                    <ul class="space-y-3 text-silk/80">
+                        <li>Zentralstrasse 16</li>
+                        <li>8003 Zürich</li>
+                        <li>Schweiz / Svizzera</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-8 border-t border-silk/10">
+                <p class="mb-4 text-silk/60 text-sm">Copyright &copy; Donatella Gaetani</p>
+                <button data-modal-target="Privacy_Cookie-Policy" data-i18n="footer_privacy_btn" class="text-xs uppercase tracking-widest text-gold border border-gold px-4 py-2 hover:bg-gold hover:text-ink transition-colors"></button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AETERNA 24 -->
+    <footer class="bg-aeterna-space text-aeterna-silver py-6 text-sm text-center border-t border-aeterna-cyan/30 shadow-[0_0_20px_rgba(69,243,255,0.1)]">
+        <div class="container mx-auto px-4">
+            <p class="mb-2 font-sans">
+                Progettato e realizzato da <span class="font-bold text-aeterna-cyan tracking-widest">AETERNA<span class="text-aeterna-rose drop-shadow-[0_0_5px_rgba(255,42,122,0.8)]">24</span></span> - Digital Vitality Web Design
+            </p>
+            <p class="text-xs italic text-aeterna-silver/70">"Designing for the future, inspired by youth"</p>
+        </div>
+    </footer>
+
+    <button id="btn-back-to-top" class="fixed bottom-6 right-6 hidden bg-gold text-ink w-12 h-12 rounded-full shadow-lg hover:bg-ink hover:text-gold transition-colors z-40 flex items-center justify-center">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Modals (Solo i contenuti sono tradotti dinamicamente) -->
+    <!-- Brazil Cacau -->
+    <div id="BrazilCacauShein" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="bg-silk dark:bg-ink w-full max-w-2xl mx-4 rounded-sm shadow-2xl transform scale-95 transition-transform duration-300 p-8 relative">
+            <button data-modal-close class="absolute top-4 right-4 text-2xl text-ink/50 dark:text-silk/50 hover:text-gold transition-colors">&times;</button>
+            <h4 data-i18n="serv_1_title" class="font-serif text-3xl font-bold text-mocha mb-6 border-b border-gold/30 pb-4"></h4>
+            <div data-i18n="modal_brazil_content" class="text-ink/80 dark:text-silk/80 space-y-4"></div>
+            <div class="mt-8 text-right"><button data-modal-close data-i18n="modal_close" class="bg-ink text-gold border border-ink hover:bg-gold hover:text-ink px-6 py-2 uppercase text-sm font-bold transition-colors"></button></div>
+        </div>
+    </div>
+    <!-- Balayage -->
+    <div id="Balayage" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="bg-silk dark:bg-ink w-full max-w-2xl mx-4 rounded-sm shadow-2xl transform scale-95 transition-transform duration-300 p-8 relative">
+            <button data-modal-close class="absolute top-4 right-4 text-2xl text-ink/50 dark:text-silk/50 hover:text-gold transition-colors">&times;</button>
+            <h4 data-i18n="serv_2_title" class="font-serif text-3xl font-bold text-mocha mb-6 border-b border-gold/30 pb-4"></h4>
+            <div data-i18n="modal_balayage_content" class="text-ink/80 dark:text-silk/80 space-y-4"></div>
+            <div class="mt-8 text-right"><button data-modal-close data-i18n="modal_close" class="bg-ink text-gold border border-ink hover:bg-gold hover:text-ink px-6 py-2 uppercase text-sm font-bold transition-colors"></button></div>
+        </div>
+    </div>
+    <!-- Babylights -->
+    <div id="Babylights" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="bg-silk dark:bg-ink w-full max-w-2xl mx-4 rounded-sm shadow-2xl transform scale-95 transition-transform duration-300 p-8 relative">
+            <button data-modal-close class="absolute top-4 right-4 text-2xl text-ink/50 dark:text-silk/50 hover:text-gold transition-colors">&times;</button>
+            <h4 data-i18n="serv_3_title" class="font-serif text-3xl font-bold text-mocha mb-6 border-b border-gold/30 pb-4"></h4>
+            <div data-i18n="modal_babylights_content" class="text-ink/80 dark:text-silk/80 space-y-4"></div>
+            <div class="mt-8 text-right"><button data-modal-close data-i18n="modal_close" class="bg-ink text-gold border border-ink hover:bg-gold hover:text-ink px-6 py-2 uppercase text-sm font-bold transition-colors"></button></div>
+        </div>
+    </div>
+    <!-- Mèches -->
+    <div id="Mèches" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="bg-silk dark:bg-ink w-full max-w-2xl mx-4 rounded-sm shadow-2xl transform scale-95 transition-transform duration-300 p-8 relative">
+            <button data-modal-close class="absolute top-4 right-4 text-2xl text-ink/50 dark:text-silk/50 hover:text-gold transition-colors">&times;</button>
+            <h4 data-i18n="serv_4_title" class="font-serif text-3xl font-bold text-mocha mb-6 border-b border-gold/30 pb-4"></h4>
+            <div data-i18n="modal_meches_content" class="text-ink/80 dark:text-silk/80 space-y-4"></div>
+            <div class="mt-8 text-right"><button data-modal-close data-i18n="modal_close" class="bg-ink text-gold border border-ink hover:bg-gold hover:text-ink px-6 py-2 uppercase text-sm font-bold transition-colors"></button></div>
+        </div>
+    </div>
+    <!-- Colore -->
+    <div id="Colore" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="bg-silk dark:bg-ink w-full max-w-2xl mx-4 rounded-sm shadow-2xl transform scale-95 transition-transform duration-300 p-8 relative">
+            <button data-modal-close class="absolute top-4 right-4 text-2xl text-ink/50 dark:text-silk/50 hover:text-gold transition-colors">&times;</button>
+            <h4 data-i18n="serv_5_title" class="font-serif text-3xl font-bold text-mocha mb-6 border-b border-gold/30 pb-4"></h4>
+            <div data-i18n="modal_colore_content" class="text-ink/80 dark:text-silk/80 space-y-4"></div>
+            <div class="mt-8 text-right"><button data-modal-close data-i18n="modal_close" class="bg-ink text-gold border border-ink hover:bg-gold hover:text-ink px-6 py-2 uppercase text-sm font-bold transition-colors"></button></div>
+        </div>
+    </div>
+    <!-- Privacy -->
+    <div id="Privacy_Cookie-Policy" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="bg-silk dark:bg-ink w-full max-w-3xl max-h-[90vh] overflow-y-auto mx-4 rounded-sm shadow-2xl transform scale-95 transition-transform duration-300 p-8 relative">
+            <button data-modal-close class="absolute top-4 right-4 text-2xl text-ink/50 dark:text-silk/50 hover:text-gold transition-colors">&times;</button>
+            <h4 class="font-serif text-3xl font-bold text-mocha mb-6 border-b border-gold/30 pb-4">Privacy &amp; Cookie Policy</h4>
+            <div data-i18n="modal_privacy_content" class="text-ink/80 dark:text-silk/80 space-y-4 text-sm"></div>
+            <div class="mt-8 text-right"><button data-modal-close data-i18n="modal_close" class="bg-ink text-gold border border-ink hover:bg-gold hover:text-ink px-6 py-2 uppercase text-sm font-bold transition-colors"></button></div>
+        </div>
+    </div>
+
+    <!-- SCRIPT & I18N DIZIONARIO -->
+    <script src="https://cdn.jsdelivr.net/npm/fslightbox/index.min.js"></script>
+    
+    <!-- Importiamo il nostro dizionario esterno -->
+    <script src="assets/js/translations.js"></script>
+    
+    <script>
+        // --- MOTORE I18N ---
+        function toggleLanguage() {
+            let currentLang = localStorage.getItem('site_lang') || 'de';
+            let newLang = currentLang === 'de' ? 'it' : 'de';
+            updateLanguage(newLang);
+        }
+
+        function updateLanguage(lang) {
+            localStorage.setItem('site_lang', lang);
+            document.documentElement.lang = lang; // Aggiorna il tag <html>
+            
+            // Sostituisce i testi
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Aggiorna il pulsante lingua (mostra l'opzione OPPOSTA a quella attiva)
+            const btnText = document.getElementById('lang-btn-text');
+            const btnImg = document.getElementById('lang-btn-img');
+            
+            if (lang === 'de') {
+                btnText.textContent = 'ITALIANO';
+                btnImg.src = 'assets/img/icon_it.png'; // Icona Puglia (da te creata)
+            } else {
+                btnText.textContent = 'DEUTSCH';
+                btnImg.src = 'assets/img/icon_de.png'; // Icona Zurigo (da te creata)
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Inizializza la lingua al caricamento
+            let initialLang = localStorage.getItem('site_lang') || 'de';
+            updateLanguage(initialLang);
+
+            // LOGICA ANIMAZIONI
+            const observerOptions = { threshold: 0.15 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+            // LOGICA BACK TO TOP
+            const backToTopBtn = document.getElementById("btn-back-to-top");
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) backToTopBtn.classList.remove("hidden");
+                else backToTopBtn.classList.add("hidden");
+            });
+            backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+            // LOGICA MENU MOBILE
+            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.toggle('hidden');
+            });
+
+            // LOGICA DARK MODE
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            themeToggleBtn.addEventListener('click', function() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+            });
+
+            // LOGICA MODAL
+            document.querySelectorAll('[data-modal-target]').forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = trigger.getAttribute('data-modal-target');
+                    const modal = document.getElementById(targetId);
+                    modal.classList.remove('hidden');
+                    setTimeout(() => {
+                        modal.classList.add('opacity-100');
+                        modal.querySelector('div').classList.replace('scale-95', 'scale-100');
+                    }, 10);
+                });
+            });
+
+            document.querySelectorAll('[data-modal-close]').forEach(closer => {
+                closer.addEventListener('click', () => {
+                    const modal = closer.closest('.fixed');
+                    modal.classList.remove('opacity-100');
+                    modal.querySelector('div').classList.replace('scale-100', 'scale-95');
+                    setTimeout(() => modal.classList.add('hidden'), 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
