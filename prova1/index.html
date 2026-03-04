@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parrucche Boutique Torino | Vendita e Consulenza dal 1960</title>
+    <meta name="description" content="Parrucche Boutique a Torino (Via Nizza 90B). Dal 1960 offriamo vendita di parrucche, extensions e soluzioni medicali con la massima riservatezza e cura.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS (Configured for performance & custom design) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        // Warm, comforting palette
+                        warm: {
+                            50: '#FDFBF7',  // Off-white background
+                            100: '#F6EFE9', // Light sand
+                            200: '#EBDCD0', // Sand
+                            300: '#D9C0AD', // Warm beige
+                            400: '#C7A38B', // Soft terracotta
+                            500: '#B28266', // Muted brown
+                            800: '#5C4334', // Dark brown text
+                            900: '#3D2C22', // Very dark brown (Dark mode bg)
+                        },
+                        blush: {
+                            100: '#FDECEF', // Very light pink
+                            500: '#E2A9A9', // Soft rose/blush
+                            900: '#5C3A3A', // Dark rose
+                        },
+                        'pc-blue': '#2563eb' // For AETERNA24 footer
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom base styles for accessibility and smoothness */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .text-balance {
+            text-wrap: balance;
+        }
+        /* Focus styles for keyboard navigation */
+        *:focus-visible {
+            outline: 2px solid #B28266;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-warm-50 text-warm-800 dark:bg-warm-900 dark:text-warm-100 transition-colors duration-300">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-warm-50/90 dark:bg-warm-900/90 backdrop-blur-md border-b border-warm-200 dark:border-warm-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl font-semibold tracking-wide text-warm-800 dark:text-warm-100 focus-visible:outline-none" aria-label="Torna alla home">
+                        Parrucche<span class="text-blush-500 italic">Boutique</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#storia" class="text-sm font-medium hover:text-blush-500 transition-colors duration-200">La Nostra Storia</a>
+                    <a href="#servizi" class="text-sm font-medium hover:text-blush-500 transition-colors duration-200">Servizi</a>
+                    <a href="#riservatezza" class="text-sm font-medium hover:text-blush-500 transition-colors duration-200">Privacy</a>
+                    <a href="#contatti" class="text-sm font-medium px-4 py-2 rounded-full bg-warm-800 text-warm-50 hover:bg-warm-500 dark:bg-warm-100 dark:text-warm-900 dark:hover:bg-warm-300 transition-colors duration-200">Vieni a Trovarci</a>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" type="button" class="p-2 rounded-full hover:bg-warm-200 dark:hover:bg-warm-800 transition-colors duration-200" aria-label="Cambia tema">
+                        <i class="ph ph-moon text-xl dark:hidden"></i>
+                        <i class="ph ph-sun text-xl hidden dark:block"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden gap-4">
+                    <button id="theme-toggle-mobile" type="button" class="p-2 rounded-full hover:bg-warm-200 dark:hover:bg-warm-800 transition-colors duration-200" aria-label="Cambia tema">
+                        <i class="ph ph-moon text-xl dark:hidden"></i>
+                        <i class="ph ph-sun text-xl hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-button" type="button" class="p-2 rounded-md hover:bg-warm-200 dark:hover:bg-warm-800 focus:outline-none" aria-expanded="false">
+                        <span class="sr-only">Apri menu principale</span>
+                        <i class="ph ph-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-warm-50 dark:bg-warm-900 border-b border-warm-200 dark:border-warm-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#storia" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-warm-100 dark:hover:bg-warm-800 transition-colors">La Nostra Storia</a>
+                <a href="#servizi" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-warm-100 dark:hover:bg-warm-800 transition-colors">Servizi</a>
+                <a href="#riservatezza" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-warm-100 dark:hover:bg-warm-800 transition-colors">Privacy</a>
+                <a href="#contatti" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-warm-100 dark:hover:bg-warm-800 transition-colors">Contatti</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="max-w-2xl">
+                        <span class="text-sm font-semibold tracking-widest text-blush-500 uppercase mb-4 block">Torino, dal 1960</span>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-warm-900 dark:text-warm-50 leading-tight mb-6 text-balance">
+                            Siamo qui per prenderci <span class="italic text-blush-500 font-normal">cura di te.</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl text-warm-800/80 dark:text-warm-100/80 mb-8 font-light leading-relaxed">
+                            Un ambiente intimo e riservato dove ritrovare la propria immagine. Offriamo consulenza personalizzata, parrucche medicali, moda ed extensions con oltre 60 anni di esperienza.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#contatti" class="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-medium rounded-full text-white bg-warm-800 hover:bg-warm-900 dark:bg-warm-100 dark:text-warm-900 dark:hover:bg-white transition-all duration-300 shadow-sm">
+                                Prenota una Consulenza
+                            </a>
+                            <a href="#riservatezza" class="inline-flex justify-center items-center px-8 py-3.5 border border-warm-300 dark:border-warm-700 text-base font-medium rounded-full text-warm-800 dark:text-warm-100 hover:bg-warm-100 dark:hover:bg-warm-800 transition-all duration-300">
+                                Scopri le nostre Cabine Private
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero Image -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl lg:h-[600px] h-[400px]">
+                        <!-- Using requested path format with fallback to placehold.co -->
+                        <img 
+                            src="assets/img/hero-boutique.jpg" 
+                            onerror="this.src='https://placehold.co/800x1000/EBDCD0/5C4334?text=Accoglienza+e+Cura'" 
+                            alt="Interno accogliente della boutique con esposizione delicata" 
+                            class="absolute inset-0 w-full h-full object-cover object-center"
+                            loading="eager"
+                        >
+                        <!-- Soft overlay for better blending -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-warm-900/30 to-transparent mix-blend-multiply"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Decorative background element -->
+            <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-full h-full max-w-3xl pointer-events-none opacity-40 dark:opacity-10">
+                <div class="aspect-square rounded-full bg-blush-100 blur-3xl"></div>
+            </div>
+        </section>
+
+        <!-- La Nostra Storia -->
+        <section id="storia" class="py-20 bg-white dark:bg-warm-900/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="order-2 lg:order-1 relative rounded-2xl overflow-hidden h-[400px] lg:h-[500px] shadow-lg">
+                        <img 
+                            src="assets/img/storia-visconti.jpg" 
+                            onerror="this.src='https://placehold.co/600x800/F6EFE9/B28266?text=Dal+1960'" 
+                            alt="Foto storica della boutique fondata nel 1960" 
+                            class="absolute inset-0 w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-700"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-6 text-warm-900 dark:text-warm-50">Oltre 60 anni di dedizione.</h2>
+                        <div class="space-y-4 text-warm-800/90 dark:text-warm-100/90 font-light leading-relaxed">
+                            <p>
+                                La nostra attività nasce nel lontano <strong>1960</strong> grazie all'intuizione di <strong>Paolo Visconti</strong>. In quegli anni la parrucca era un accessorio di alta moda, un vezzo che permetteva alle donne di cambiare acconciatura quotidianamente con grande facilità.
+                            </p>
+                            <p>
+                                Con il passare degli anni, abbiamo ampliato le nostre competenze introducendo il servizio di hair extensions, restando sempre al passo con le tendenze e le innovazioni del settore.
+                            </p>
+                            <p class="p-4 bg-blush-100/50 dark:bg-blush-900/20 rounded-xl border border-blush-100 dark:border-blush-900/50">
+                                Oggi la tradizione continua con <strong>Debora Spata</strong>, nipote del fondatore. Abbiamo scelto di dedicare la nostra esperienza decennale a uno scopo più profondo: la parrucca si è evoluta in un <strong>dispositivo medicale</strong> essenziale per supportare chi sta affrontando percorsi di chemioterapia o alopecia, aiutando a ritrovare il sorriso e la sicurezza in un momento delicato.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servizi -->
+        <section id="servizi" class="py-20 bg-warm-50 dark:bg-warm-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-4 text-warm-900 dark:text-warm-50">I Nostri Servizi</h2>
+                    <p class="text-warm-800/80 dark:text-warm-100/80 font-light">Non ci limitiamo alla vendita. Ti accompagniamo con professionalità prima, durante e dopo la tua scelta.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white dark:bg-warm-800/50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-warm-100 dark:border-warm-700/50">
+                        <div class="w-12 h-12 bg-blush-100 dark:bg-blush-900/30 text-blush-500 rounded-full flex items-center justify-center mb-6">
+                            <i class="ph ph-heart text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-3">Parrucche Medicali</h3>
+                        <p class="text-sm font-light text-warm-800/80 dark:text-warm-100/80">Ampia disponibilità in pronta consegna di parrucche specifiche per terapie, traspiranti e delicate sulla cute.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white dark:bg-warm-800/50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-warm-100 dark:border-warm-700/50">
+                        <div class="w-12 h-12 bg-blush-100 dark:bg-blush-900/30 text-blush-500 rounded-full flex items-center justify-center mb-6">
+                            <i class="ph ph-scissors text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-3">Manutenzione & Lavaggio</h3>
+                        <p class="text-sm font-light text-warm-800/80 dark:text-warm-100/80">Servizio professionale di lavaggio, igienizzazione e piega per mantenere la tua parrucca sempre perfetta nel tempo.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white dark:bg-warm-800/50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-warm-100 dark:border-warm-700/50">
+                        <div class="w-12 h-12 bg-blush-100 dark:bg-blush-900/30 text-blush-500 rounded-full flex items-center justify-center mb-6">
+                            <i class="ph ph-wrench text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-3">Riparazione Sartoriale</h3>
+                        <p class="text-sm font-light text-warm-800/80 dark:text-warm-100/80">Interventi di sartoria specializzata per riparare o adattare su misura le calotte, garantendo il massimo comfort.</p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white dark:bg-warm-800/50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-warm-100 dark:border-warm-700/50">
+                        <div class="w-12 h-12 bg-blush-100 dark:bg-blush-900/30 text-blush-500 rounded-full flex items-center justify-center mb-6">
+                            <i class="ph ph-sparkle text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-3">Moda & Extensions</h3>
+                        <p class="text-sm font-light text-warm-800/80 dark:text-warm-100/80">Soluzioni estetiche di alta qualità, infoltimenti e extensions sia in capelli veri che sintetici di ultima generazione.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy & Riservatezza -->
+        <section id="riservatezza" class="py-20 relative overflow-hidden">
+            <!-- Warm gentle background -->
+            <div class="absolute inset-0 bg-warm-200 dark:bg-warm-800/80"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="bg-white/80 dark:bg-warm-900/90 backdrop-blur-sm rounded-3xl p-8 lg:p-16 shadow-xl border border-white/40 dark:border-warm-700/50">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blush-100 dark:bg-blush-900/40 text-blush-900 dark:text-blush-100 text-sm font-medium mb-6">
+                                <i class="ph ph-shield-check text-lg"></i> Il Nostro Valore Aggiunto
+                            </div>
+                            <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-6 text-warm-900 dark:text-warm-50">La tua Privacy, prima di tutto.</h2>
+                            <p class="text-lg text-warm-800/90 dark:text-warm-100/90 font-light mb-6 leading-relaxed">
+                                Sappiamo quanto possa essere emotivamente complessa la scelta di una parrucca, specialmente per motivi di salute. Per noi tutelare la tua sensibilità è la priorità assoluta.
+                            </p>
+                            <p class="text-lg text-warm-800/90 dark:text-warm-100/90 font-light mb-8 leading-relaxed">
+                                All'interno della nostra boutique abbiamo allestito <strong>due cabine chiuse ed esclusive</strong>. Qui potrai provare in totale serenità e lontana da sguardi indiscreti i numerosi modelli in pronta consegna, assistita con empatia e discrezione dal nostro personale.
+                            </p>
+                            <ul class="space-y-3 font-medium text-warm-800 dark:text-warm-100">
+                                <li class="flex items-center gap-3"><i class="ph ph-check-circle text-blush-500 text-xl"></i> Nessuna vetrina a vista interna</li>
+                                <li class="flex items-center gap-3"><i class="ph ph-check-circle text-blush-500 text-xl"></i> Appuntamenti dedicati per evitare attese</li>
+                                <li class="flex items-center gap-3"><i class="ph ph-check-circle text-blush-500 text-xl"></i> Consulenza psicologicamente attenta</li>
+                            </ul>
+                        </div>
+                        <div class="relative rounded-2xl overflow-hidden h-[300px] lg:h-[450px]">
+                            <img 
+                                src="assets/img/cabina-privata.jpg" 
+                                onerror="this.src='https://placehold.co/600x600/F6EFE9/B28266?text=Cabine+Private'" 
+                                alt="Ambiente confortevole e privato per la prova delle parrucche" 
+                                class="absolute inset-0 w-full h-full object-cover"
+                                loading="lazy"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contatti -->
+        <section id="contatti" class="py-20 bg-white dark:bg-warm-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <div>
+                        <h2 class="text-3xl lg:text-4xl font-serif font-bold mb-8 text-warm-900 dark:text-warm-50">Vieni a trovarci</h2>
+                        <p class="text-warm-800/80 dark:text-warm-100/80 font-light mb-8">
+                            Siamo a tua disposizione per qualsiasi informazione. Contattaci per fissare un appuntamento nella nostra cabina privata o vieni direttamente in negozio.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-warm-100 dark:bg-warm-800 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="ph ph-map-pin text-xl text-warm-800 dark:text-warm-100"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-warm-900 dark:text-warm-50">Indirizzo</h4>
+                                    <p class="font-light text-warm-800/80 dark:text-warm-100/80 mt-1">Via Nizza 90B<br>10126 Torino (TO)</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-warm-100 dark:bg-warm-800 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="ph ph-phone text-xl text-warm-800 dark:text-warm-100"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-warm-900 dark:text-warm-50">Telefono</h4>
+                                    <p class="font-light text-warm-800/80 dark:text-warm-100/80 mt-1">
+                                        <a href="tel:+390110000000" class="hover:text-blush-500 transition-colors">+39 011 000 0000</a> <!-- Inserire numero reale -->
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-warm-100 dark:bg-warm-800 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="ph ph-clock text-xl text-warm-800 dark:text-warm-100"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-warm-900 dark:text-warm-50">Orari</h4>
+                                    <p class="font-light text-warm-800/80 dark:text-warm-100/80 mt-1">
+                                        Mar - Sab: 09:30 - 12:30 / 15:30 - 19:30<br>
+                                        Lunedì e Domenica: Chiuso
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mappa Placeholder -->
+                    <div class="bg-warm-100 dark:bg-warm-800 rounded-2xl h-[400px] relative overflow-hidden shadow-inner">
+                        <!-- Placeholder per iframe Google Maps -->
+                        <img 
+                            src="assets/img/mappa-torino.jpg" 
+                            onerror="this.src='https://placehold.co/600x400/EBDCD0/5C4334?text=Mappa+Via+Nizza+90B'" 
+                            alt="Mappa posizione negozio Torino" 
+                            class="absolute inset-0 w-full h-full object-cover opacity-70"
+                        >
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div class="bg-white/90 dark:bg-warm-900/90 px-6 py-3 rounded-full shadow-lg flex items-center gap-2 backdrop-blur-sm">
+                                <i class="ph ph-map-pin-line text-blush-500 text-xl"></i>
+                                <span class="font-medium text-sm">Via Nizza 90B, Torino</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-warm-100 dark:bg-[#1A1311] pt-16 pb-8 border-t border-warm-200 dark:border-warm-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div>
+                    <h2 class="font-serif text-2xl font-semibold tracking-wide text-warm-900 dark:text-warm-50 mb-4">
+                        Parrucche<span class="text-blush-500 italic">Boutique</span>
+                    </h2>
+                    <p class="text-warm-800/70 dark:text-warm-100/70 text-sm font-light max-w-sm">
+                        La tua bellezza, la nostra cura. Dal 1960 offriamo competenza, empatia e la massima riservatezza per ogni esigenza estetica o medicale.
+                    </p>
+                </div>
+                
+                <!-- AETERNA 24 CREDITS BLOCCO RICHIESTO -->
+                <div class="md:text-right flex flex-col md:items-end justify-center">
+                    <!-- Codice originario con aggiunta delle classi dark mode (es. dark:text-gray-300) per accessibilità -->
+                    <div class="mb-8 text-left md:text-right">
+                        <p class="font-bold text-gray-400 dark:text-gray-500 text-xs uppercase tracking-widest mb-1">Created by</p>
+                        <h3 class="text-xl font-black text-gray-800 dark:text-gray-200 tracking-tight">AETERNA<span class="text-pc-blue">24</span></h3>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 italic">Designing for the future, inspired by youth</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-warm-200 dark:border-warm-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-warm-800/60 dark:text-warm-100/60">
+                <p>&copy; 2026 Parrucche Boutique. P.IVA 00000000000. Tutti i diritti riservati.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-warm-900 dark:hover:text-warm-50 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-warm-900 dark:hover:text-warm-50 transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript Vanilla per Logica e Interattività -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Dark Mode Logic ---
+            const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+            const html = document.documentElement;
+
+            // Check system preference or localStorage
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+
+            // Toggle logic
+            themeToggleBtns.forEach(btn => {
+                if(!btn) return;
+                btn.addEventListener('click', () => {
+                    html.classList.toggle('dark');
+                    if (html.classList.contains('dark')) {
+                        localStorage.theme = 'dark';
+                    } else {
+                        localStorage.theme = 'light';
+                    }
+                });
+            });
+
+            // --- Mobile Menu Logic ---
+            const mobileBtn = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+            if(mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+                    mobileBtn.setAttribute('aria-expanded', !isExpanded);
+                });
+
+                // Chiudi il menu quando si clicca un link
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
